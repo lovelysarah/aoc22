@@ -1,17 +1,17 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strconv"
   "sort"
 	"strings"
+  "aoc22/utils"
 )
+
 
 func main(){
   //str,err := readInput("/sample/day-1.txt")
-  str,err := readInput("/input/day-1.txt")
+  str,err := utils.ReadInput("/input/day-1.txt")
 
   if err != nil {
     fmt.Println(err)
@@ -57,23 +57,3 @@ func main(){
   fmt.Println(biggests)
 }
 
-func readInput(path string) (result string, err error){
-  wd, err := os.Getwd()
-
-  file, err := os.Open(wd + path);
-
-  if err != nil {
-    return "", err
-  }
-
-  defer file.Close()
-
-  scanner := bufio.NewScanner(file)
-
-  var str string
-  for scanner.Scan() {
-    str += scanner.Text() + "\n"
-  }
-
-  return str, nil
-}
