@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+  "sort"
 	"strings"
 )
 
@@ -13,10 +14,9 @@ func main(){
   str,err := readInput("/input/day-1.txt")
 
   if err != nil {
+    fmt.Println(err)
     return
   }
-
-  fmt.Println(str)
 
   lines := strings.Split(str, "\n")
   groups := [][]int{}
@@ -34,25 +34,27 @@ func main(){
     }
   }
 
-
-  for idx, group := range groups {
+  var sums []int
+  for _, group := range groups {
     sum := 0
     for _, element := range group {
       sum += element
-      groups[idx] = []int{sum}
     }
+    sums = append(sums, sum)
   }
 
-  largest := 0
-  for _, group := range groups {
-    if group[0] > largest {
-      largest = group[0]
-    }
+  sort.Sort(sort.Reverse(sort.IntSlice(sums)))
+
+  // Part 1
+  fmt.Println(sums[0])
+
+  // Part 2
+  biggests := 0
+  for _, x := range sums[:3] {
+    biggests += x
   }
 
-  //Answer
-  fmt.Println(largest)
-
+  fmt.Println(biggests)
 }
 
 func readInput(path string) (result string, err error){
@@ -61,7 +63,6 @@ func readInput(path string) (result string, err error){
   file, err := os.Open(wd + path);
 
   if err != nil {
-  fmt.Println(err)
     return "", err
   }
 
