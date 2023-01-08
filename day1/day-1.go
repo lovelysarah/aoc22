@@ -9,6 +9,7 @@ import (
 )
 
 func Run() {
+	fmt.Println("-------- Day 1 ---------")
 	str, err := utils.ReadInput("/input/day-1.txt")
 
 	if err != nil {
