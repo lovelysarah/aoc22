@@ -7,7 +7,13 @@ import (
 )
 
 func main() {
+	// Day 1
 	day1.Run()
+
+	// Day 2
 	day2.Run()
-	day3.Run()
+
+	// Day 3
+	day3.Part1()
+	day3.Part2()
 }

@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-func Run() {
-	fmt.Println("-------- Day 3 ---------")
+func Part1() {
+	fmt.Println("-------- Day 3 Part 1 ---------")
 	str, err := utils.ReadInput("/input/day-3.txt")
 
 	if err != nil {
